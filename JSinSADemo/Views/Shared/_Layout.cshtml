@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <div id="Scripts">
+        <script src="~/Scripts/respond.js"></script>
+        <script src="~/Scripts/jquery-2.0.3.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/jquery.signalR-2.0.3.js"></script>
+        <script src="~/SignalR/hubs"></script>
+    </div>
+</body>
+</html>
