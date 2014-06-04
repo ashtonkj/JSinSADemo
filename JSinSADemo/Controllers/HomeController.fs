@@ -11,3 +11,5 @@ type HomeController() =
     inherit Controller()
     member this.Index () = this.View()
 
+    member this.MainScript() =
+        FunScript.Compiler.Compiler.Compile(<@ ScriptModule.Main() @>)

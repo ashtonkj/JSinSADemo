@@ -36,11 +36,32 @@ module TweetParsingAgent =
                             Tweet.Text = parsed.Text
                             Tweet.UserMentions = parsed.Entities.UserMentions |> Seq.map (fun u -> { UserMention.Name = u.Name; UserMention.ScreenName = u.ScreenName }) |> List.ofSeq
                         }
+                    TweetReceivedSubject.OnNext tweet
+                    MessageReceivedSubject.OnNext (TweetReceived tweet)
                     return! loop()
                 }
         loop()
     let TweetParsingAgent= new Agent<string>(processLine)
     StreamLineReceivedSubject.Subscribe TweetParsingAgent.Post |> ignore
+
+module MessagingAgent = 
+    open Microsoft.AspNet.SignalR
+    open EkonBenefits.FSharp.Dynamic
+    let ProcessMessage(inbox: Agent<Message>) =
+        let hub = GlobalHost.ConnectionManager.GetHubContext<Hubs.TweetHub>()
+        let rec loop() =
+            async 
+                {
+                    let! cmd = inbox.Receive()
+                    match cmd with
+                    | TweetReceived tweet -> 
+                        hub.Clients.All?tweetReceived(tweet)
+                    | _ -> failwith "No processing specified yet"
+                    return! loop()
+                }
+        loop()
+    let MessagingAgent = new Agent<Message>(ProcessMessage)
+    MessageReceivedSubject.Subscribe MessagingAgent.Post |> ignore
 
 module ControllingAgent = 
     let BaseFilterStreamUrl = "https://stream.twitter.com/1.1/statuses/filter.json?language=en&track="

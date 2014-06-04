@@ -132,6 +132,11 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <Compile Include="Types\Types.fs" />
+    <Compile Include="Types\Subjects.fs" />
+    <Compile Include="Types\Hubs.fs" />
+    <Compile Include="ScriptModule\LocalBindings.fs" />
+    <Compile Include="ScriptModule\ScriptModule.fs" />
     <Compile Include="Controllers\HomeController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
     <Content Include="Views\Web.config" />
@@ -143,9 +148,6 @@
     <Content Include="Global.asax" />
     <None Include="packages.config" />
     <Content Include="readme.txt" />
-    <Compile Include="Types\Types.fs" />
-    <Compile Include="Types\Subjects.fs" />
-    <Compile Include="Types\Hubs.fs" />
     <Compile Include="Agents\Agents.fs" />
     <Compile Include="Global.asax.fs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -156,12 +158,40 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dynamitey">
+      <HintPath>..\packages\Dynamitey.1.0.2.0\lib\net40\Dynamitey.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FSharp.Data">
       <HintPath>..\packages\FSharp.Data.2.0.8\lib\net40\FSharp.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FSharp.Dynamic">
+      <HintPath>..\packages\FSharp.Dynamic.1.4.2.0\lib\net40\FSharp.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FSharp.Reactive">
       <HintPath>..\packages\FSharp.Reactive.2.2.131002\lib\net40\FSharp.Reactive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FunScript">
+      <HintPath>..\packages\FunScript.1.1.47\lib\net40\FunScript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FunScript.Interop">
+      <HintPath>..\packages\FunScript.1.1.47\lib\net40\FunScript.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FunScript.TypeScript.Binding.jquery">
+      <HintPath>..\packages\FunScript.TypeScript.Binding.jquery.1.1.0.37\lib\net40\FunScript.TypeScript.Binding.jquery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FunScript.TypeScript.Binding.lib">
+      <HintPath>..\packages\FunScript.TypeScript.Binding.lib.1.1.0.37\lib\net40\FunScript.TypeScript.Binding.lib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FunScript.TypeScript.Binding.signalr">
+      <HintPath>..\packages\FunScript.TypeScript.Binding.signalr.1.1.0.37\lib\net40\FunScript.TypeScript.Binding.signalr.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
